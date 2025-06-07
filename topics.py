@@ -1,28 +1,24 @@
 import streamlit as st
 import pandas as pd
-import google.generativeai as genai  # ✅ 正確匯入 Gemini 模組
+import google.generativeai as genai
 
 st.set_page_config(page_title="AI 與資料集工具", page_icon="📊")
 st.title("📊 資料集上傳與 Gemini AI 工具")
 
-# 側邊欄選單
 page = st.sidebar.radio("選擇頁面", ["資料集分析", "Gemini AI"])
 
-# === 📁 資料集分析 ===
 if page == "資料集分析":
     uploaded_file = st.file_uploader("請上傳 CSV 檔案", type="csv")
-
     if uploaded_file is not None:
         df = pd.read_csv(uploaded_file)
         st.success("✅ 檔案上傳成功！")
         st.dataframe(df)
 
-# === 🤖 Gemini AI 助理 ===
 else:
     st.title("🤖 Gemini AI 助理")
 
-    # ✅ 設定 API 金鑰（請填入你從 Google AI Studio 拿到的金鑰）
-    genai.configure(api_key="AIzaSyADXEyw8-yGJPGo4hc_0IgIOWWtNJ7cdro")
+    # ✅ 使用 secrets 管理金鑰
+    genai.configure(api_key=st.secrets["gemini"]["api_key"])
 
     model = genai.GenerativeModel("gemini-pro")
     user_input = st.text_input("請輸入你的問題：")
