@@ -20,7 +20,7 @@ else:
     # ✅ 使用 secrets 管理金鑰
     genai.configure(api_key=st.secrets["gemini"]["api_key"])
 
-    model = genai.GenerativeModel("'gemini-1.0-pro'")
+    model = genai.GenerativeModel('gemini-1.0-pro')
     user_input = st.text_input("請輸入你的問題：")
 
     if user_input:
