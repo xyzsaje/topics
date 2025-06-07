@@ -22,7 +22,7 @@ else:
     st.title("🤖 Gemini AI 助理")
 
     # ✅ 設定 API 金鑰（請填入你從 Google AI Studio 拿到的金鑰）
-    genai.configure(api_key="你的_API_金鑰")
+    genai.configure(api_key="AIzaSyADXEyw8-yGJPGo4hc_0IgIOWWtNJ7cdro")
 
     model = genai.GenerativeModel("gemini-pro")
     user_input = st.text_input("請輸入你的問題：")
