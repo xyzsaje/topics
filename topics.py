@@ -1,6 +1,6 @@
 import streamlit as st
 import pandas as pd
-import google.generativeai as genai  # ✅ 正確匯入 Gemini 模組
+import google as genai  # ✅ 正確匯入 Gemini 模組
 
 st.set_page_config(page_title="AI 與資料集工具", page_icon="📊")
 st.title("📊 資料集上傳與 Gemini AI 工具")
