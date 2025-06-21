@@ -46,7 +46,7 @@ else:
     # 設定 API 金鑰
     try:
         genai.configure(api_key=st.secrets["gemini"]["api_key"])
-        model = genai.GenerativeModel("models/gemini-1.5-pro-latest")
+        model = genai.GenerativeModel("models/gemini-2.0-flash")
 
         user_input = st.text_input("請輸入你的問題：")
         if st.button("送出問題") and user_input.strip():
