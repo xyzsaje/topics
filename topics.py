@@ -3,8 +3,13 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import google.generativeai as genai
 import matplotlib
-matplotlib.rcParams['font.family'] = ['Microsoft JhengHei', 'SimHei', 'Noto Sans CJK TC', 'sans-serif']
-matplotlib.rcParams['axes.unicode_minus'] = False
+import matplotlib.font_manager as fm
+
+# 下載一個開源中文字型（只需做一次）
+font_path = "fonts/NotoSansTC-Regular.otf"
+font_prop = fm.FontProperties(fname=font_path)
+plt.rcParams['font.family'] = font_prop.get_name()
+plt.rcParams['axes.unicode_minus'] = False
 
 
 
