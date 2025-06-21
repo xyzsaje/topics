@@ -16,9 +16,28 @@ if page == "資料集分析":
         try:
             df = pd.read_csv(uploaded_file)
             st.success("✅ 檔案上傳成功！")
+
+            # 顯示資料表
+            st.subheader("🔍 原始資料")
             st.dataframe(df)
+
+            # 顯示統計摘要
+            st.subheader("📈 數值欄位摘要")
+            st.write(df.describe())
+
+            # 新增圖表產生器
+            st.subheader("📊 圖表產生")
+            column = st.selectbox("請選擇欄位進行圖表分析", df.columns)
+
+            if pd.api.types.is_numeric_dtype(df[column]):
+                st.line_chart(df[column])
+            else:
+                st.bar_chart(df[column].value_counts())
+
         except Exception as e:
-            st.error(f"讀取失敗：{e}")
+            st.error(f"❌ 讀取資料時發生錯誤：{e}")
+    else:
+        st.info("📁 請上傳一份 CSV 檔案以開始分析。")
 
 # ✅ Gemini AI 頁面
 else:
