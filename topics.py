@@ -6,7 +6,7 @@ import matplotlib
 import matplotlib.font_manager as fm
 
 # 下載一個開源中文字型（只需做一次）
-font_path = "NotoSansTC-Regular.otf"
+font_path = "./NotoSansTC-Regular.otf"
 font_prop = fm.FontProperties(fname=font_path)
 plt.rcParams['font.family'] = font_prop.get_name()
 plt.rcParams['axes.unicode_minus'] = False
