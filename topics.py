@@ -3,8 +3,19 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import google.generativeai as genai
 import matplotlib
-matplotlib.rcParams['font.family'] = 'Microsoft JhengHei'
-matplotlib.rcParams['axes.unicode_minus'] = False  # 避免負號顯示錯誤
+import matplotlib.font_manager as fm
+
+# 下載一個開源中文字型（只需做一次）
+font_path = "/tmp/NotoSansTC-Regular.otf"
+if not fm.findSystemFonts(fontpaths=["/tmp"]):
+    import urllib.request
+    url = "https://github.com/googlefonts/noto-cjk/raw/main/Sans/OTF/TraditionalChinese/NotoSansTC-Regular.otf"
+    urllib.request.urlretrieve(url, font_path)
+
+# 設定為 matplotlib 使用字型
+fontprop = fm.FontProperties(fname=font_path)
+plt.rcParams['font.family'] = fontprop.get_name()
+plt.rcParams['axes.unicode_minus'] = False
 
 
 # 頁面設定：標題與圖示
